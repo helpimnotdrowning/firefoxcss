@@ -4,14 +4,26 @@
 :root {
   /* sharper corners */
   --firefoxcss-border-radius: 8px !important;
-  /* more margin for m/m/c buttons (default 95) */
-  --firefoxcss-control-buttons-margin: 128px;
   
   /* less delay when opening vertical tabs */
   --delay: 0.3s;
   
   /* ranmaru22/firefox-vertical-tabs : fix nav-bar cut off on top */
   --uc-toolbar-height: 10px;
+}
+
+/* more margin for m/m/c buttons (default 95) */
+@media (-moz-platform: windows) {
+  :root {
+    --firefoxcss-control-buttons-margin: 128px;
+  }
+}
+
+/* a litttle less margin for linux kde hidpi @ 150% (fw13 2256 x 1504) */
+@media (-moz-platform: linux) {
+  :root {
+    --firefoxcss-control-buttons-margin: 80px;
+  }
 }
 
 /*
@@ -102,5 +114,29 @@
   
     :root:not([sizemode="maximized"]) .titlebar-buttonbox-container .titlebar-button {
     margin-top: -1px !important;
+  }
+}
+
+@media (-moz-platform: linux) {
+  /*
+    From: MrOtherGuy/firefox-csshacks: Workaround for Firefox bug : Use Linux's own
+    mmc buttons instead of built-in ones when using a theme
+  */
+  .titlebar-button{
+    list-style-image: none !important;
+    appearance: auto !important;
+  }
+
+  .titlebar-min {
+    -moz-default-appearance: -moz-window-button-minimize !important;
+  }
+  .titlebar-max {
+    -moz-default-appearance: -moz-window-button-maximize !important;
+  }
+  .titlebar-restore {
+    -moz-default-appearance: -moz-window-button-restore !important;
+  }
+  .titlebar-close {
+    -moz-default-appearance: -moz-window-button-close !important;
   }
 }
