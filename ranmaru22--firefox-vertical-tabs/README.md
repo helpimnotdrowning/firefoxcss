@@ -1,0 +1,1 @@
+All instances of `tabcenter` in this userChrome have been replaced with `treestyletab_piro_sakura_ne_jp-sidebar-action`.

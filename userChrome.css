@@ -1,0 +1,106 @@
+@import url("ranmaru22--firefox-vertical-tabs/userChrome.css");
+@import url("datguypiko--Firefox-Mod-Blur/userChrome.css");
+
+:root {
+  /* sharper corners */
+  --firefoxcss-border-radius: 8px !important;
+  /* more margin for m/m/c buttons (default 95) */
+  --firefoxcss-control-buttons-margin: 128px;
+  
+  /* less delay when opening vertical tabs */
+  --delay: 0.3s;
+  
+  /* ranmaru22/firefox-vertical-tabs : fix nav-bar cut off on top */
+  --uc-toolbar-height: 10px;
+}
+
+/*
+  Remove the space given by ranmaru22/firefox-vertical-tabs for mmc controls
+  in favor of letting datguypiko/Firefox-Mod-Blur handle it
+*/
+:root[tabsintitlebar]{
+  --uc-window-control-width: 0px;
+}
+
+/*
+  Don't display the ranmaru22/firefox-vertical-tabs built-in sidebar splitter
+*/
+#sidebar-box[sidebarcommand*="treestyletab_piro_sakura_ne_jp-sidebar-action"]:not([hidden]) {
+  border-right: unset;
+}
+
+
+/* Don't display the Nav Bar splitter */
+#navigator-toolbox-background #navigator-toolbox {
+  border-bottom: none !important;
+}
+
+/*
+  Using TreeStyleTabs as vertical tabs implementation, moving the tab bar while
+  hidded breaks things, so it is unset here
+*/
+#titlebar {
+  order: unset !important;
+}
+
+/*
+  From Astromations/FlyingFox : Add a rounded corner to the top-left of the
+  browser content space, kind of mimics what Edge does with their sidebar
+  
+  TODO: currently gray, ill get the proper color later
+  
+  (curiously, Edge doesn't do this with their vertical tabs bar, just that weird
+  sidebar where they put shortcuts to bad HTML5 games and coupons)
+*/
+@media all and (display-mode: browser) {
+	#tabbrowser-tabpanels browser[type="content"] {
+    /*color-scheme: unset !important;*/
+		border-top-left-radius: 18px;
+	}
+}
+
+/*
+  ranmaru22/firefox-vertical-tabs : Fix funky padding for Firefox button, align
+*/
+@media (-moz-platform: windows), (-moz-platform: windows-win10) {
+  #PanelUI-button
+{
+    margin-top: 1px !important;
+  }
+}
+
+/*
+  ranmaru22/firefox-vertical-tabs : Fix mmc box sizes, sized closer to other
+  boxes like the extension buttons
+*/
+@media (-moz-platform: windows), (-moz-platform: windows-win10) {
+  .titlebar-buttonbox * {
+    width: 39px !important;
+    height: 28px !important;
+  }
+}
+
+/*
+  datguypiko/Firefox-Mod-Blur : Unset mmc padding, align w/ other buttons
+  8px spacing almost perfectly aligns with normal W11 button spacing
+*/
+@media (-moz-platform: windows) {
+  .titlebar-buttonbox-container .titlebar-button
+{
+    padding: unset !important;
+    padding-left: unset !important;
+    padding-right: unset !important;
+    margin-left: 3px !important;
+    margin-right: 3px !important;
+  }
+}
+
+@media (-moz-platform: windows) {
+  :root[sizemode="maximized"] .titlebar-buttonbox-container .titlebar-button {
+    margin-top: 2px !important;
+  }
+  
+    :root:not([sizemode="maximized"]) .titlebar-buttonbox-container .titlebar-button {
+    margin-top: -1px !important;
+  }
+}

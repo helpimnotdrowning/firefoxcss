@@ -1,0 +1,12 @@
+@import url("datguypiko--Firefox-Mod-Blur/userContent.css");
+
+/*
+  Hide search bar in newtab (but keep spacing), I just use the URL bar anyways
+*/
+@-moz-document url("about:home"),
+url("about:newtab") {
+  .search-wrapper .search-handoff-button, .search-wrapper input {
+    visibility: hidden
+  }
+}
+
