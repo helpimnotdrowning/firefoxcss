@@ -1,12 +1,13 @@
 @import url("ranmaru22--firefox-vertical-tabs/userChrome.css");
 @import url("datguypiko--Firefox-Mod-Blur/userChrome.css");
+@import url("helpimnotdrowning--icon-replacements/userChrome.css");
 
 :root {
   /* sharper corners */
-  --firefoxcss-border-radius: 8px !important;
+  --firefoxcss-border-radius: 12px !important;
   
   /* less delay when opening vertical tabs */
-  --delay: 0.3s;
+  --delay: 0.0s;
   
   /* ranmaru22/firefox-vertical-tabs : fix nav-bar cut off on top */
   --uc-toolbar-height: 10px;
@@ -140,3 +141,136 @@
     -moz-default-appearance: -moz-window-button-close !important;
   }
 }
+
+/*
+  Source file https://github.com/MrOtherGuy/firefox-csshacks/tree/master/chrome/window_control_fallback_for_custom_windows_theme.css
+  made available under Mozilla Public License v. 2.0
+  See the above repository for updates as well as full license text.
+*/
+
+/*
+  If one uses custom Windows theme, then Firefox uses high-contrast window
+  control buttons. This style makes Firefox fall back to using normal window
+  control style.
+*/
+
+.titlebar-button {
+  background-color: transparent !important;
+  -moz-context-properties: stroke !important;
+  stroke: currentColor !important;
+}
+
+.titlebar-button:hover {
+  background-color: hsla(0,0%,100%,.32) !important
+}
+
+.titlebar-close:hover {
+  background-color: hsl(355,86%,49%) !important
+}
+
+.titlebar-close {
+  list-style-image: url(chrome://browser/skin/window-controls/close.svg) !important
+}
+
+.titlebar-min {
+  list-style-image: url(chrome://browser/skin/window-controls/minimize.svg) !important
+}
+
+.titlebar-max {
+  list-style-image: url(chrome://browser/skin/window-controls/maximize.svg) !important
+}
+
+.titlebar-restore {
+  list-style-image: url(chrome://browser/skin/window-controls/restore.svg) !important
+}
+
+/*
+  Source file https://github.com/MrOtherGuy/firefox-csshacks/tree/master/chrome/menulike_bookmarks_folder_popups.css
+  made available under Mozilla Public License v. 2.0
+  See the above repository for updates as well as full license text.
+*/
+
+/*
+  This style makes menus from bookmarks toolbar folders look like context menus
+  do (on Win10) which was the behavior pre-fx92
+*/
+
+menupopup[placespopup="true"] {
+  padding: 0 !important;
+  margin: 0 !important;
+  --arrowpanel-background: var(--menu-background-color,Menu) !important;
+  border-radius: var(--panel-border-radius) !important;
+}
+
+.menupopup-arrowscrollbox{
+  margin-top: 1px !important;
+  border: 1px solid var(--panel-border-color) !important;
+  padding: var(--panel-padding) !important;
+  border-radius: var(--panel-border-radius) !important;
+}
+
+:where(menupopup[placespopup="true"]) menu,
+:where(menupopup[placespopup="true"]) menuitem {
+  margin-inline: 0 !important;
+  padding-inline-start: 1em !important;
+  border-radius: 0 !important;
+  padding-block: 0.5em !important;
+}
+
+/* ************************* */
+
+:root{ --uc-navbar-height: 41px }
+:root[uidensity="compact"]{ --uc-navbar-height: 38px }
+:root[uidensity="touch"]{ --uc-navbar-height: 46px }
+
+#nav-bar:not([customizing])
+{
+    position: relative;
+    z-index: 3;
+    padding-left: 48px;
+}
+
+:root[sessionrestored]:not([inFullscreen]) > body > #browser
+{
+    margin-top: calc(var(--uc-navbar-height) * -1);
+}
+
+:root[sessionrestored]:not([inFullscreen]) #appcontent
+{
+    margin-top: var(--uc-navbar-height);
+}
+
+/*
+  Sidebar takes up entire side
+*/
+
+#sidebar-box {
+  margin-top: -1px !important;
+  z-index: 99 !important;;
+}
+
+#sidebar-box:not([hidden]) {
+    display: block;
+    position: fixed;
+    min-width: 48px;
+    max-width: 48px;
+    overflow: hidden;
+    transition: all 0.2s ease;
+    border-right: 1px solid var(--sidebar-border-color);
+    
+}
+
+/************/
+
+
+#nav-bar{
+  border-inline: var(--uc-window-drag-space-width,80px) solid var(--toolbar-bgcolor) ;
+  border-inline-style: unset !important;
+  border-right-width: calc(var(--uc-window-control-width,0px) + var(--uc-window-drag-space-width,0px));
+
+  padding-top: .5px !important; /* This makes it possible to drag the maximized window. */
+  margin-left: 48px; /* Removes the space left when hiding .titlebar-buttonbox-container */
+  z-index: 1 !important;
+}
+/**/
+#main-window #sidebar-box { z-index: 99 !important;}
