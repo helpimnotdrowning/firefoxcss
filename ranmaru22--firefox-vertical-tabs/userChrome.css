@@ -43,6 +43,11 @@
         padding-top: 0px !important;
     }
 
+    /* Fixes issue in FF 123 where minimize, close, and maximize buttons no longer work. */
+    :root[tabsintitlebar] #titlebar {
+        will-change: auto !important;
+    }
+
     :root:not([customizing="true"]) #toolbar-menubar[inactive]+#TabsToolbar .titlebar-buttonbox-container {
         visibility: visible !important;
         position: absolute;
@@ -293,8 +298,7 @@
     bottom: 0;
 }
 
-/* use :where() selector to lower specificity */
-:where(#main-window[inFullscreen]:not([chromehidden~="toolbar"])) #sidebar-box[sidebarcommand*="treestyletab_piro_sakura_ne_jp-sidebar-action"]:not([hidden]) {
+#main-window[inFullscreen]:not([chromehidden~="toolbar"]) #sidebar-box[sidebarcommand*="treestyletab_piro_sakura_ne_jp-sidebar-action"]:not([hidden]):not(:hover) {
     min-width: var(--fullscreen-sidebar-width) !important;
     max-width: var(--fullscreen-sidebar-width) !important;
 }
@@ -365,4 +369,9 @@
     #menubar-items {
         display: none !important;
     }
+}
+
+/* Up the z-index of the top bar so that the bookmarks toolbar is above the sidebar. */
+#navigator-toolbox {
+    z-index: 2 !important;
 }
