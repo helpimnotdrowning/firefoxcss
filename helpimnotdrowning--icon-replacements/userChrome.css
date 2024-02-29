@@ -1,0 +1,10 @@
+/* firefox doesn't seem to like whem i reference the files here for some reason, so they get encoded! */
+
+@media (prefers-color-scheme: dark) {
+  #_446900e4-71c2-419f-a6a7-df9c091e268b_-BAP[style *= "locked"] {
+	  --webextension-toolbar-image-light: url("file:C:/Users/helpi/AppData/Roaming/Mozilla/Firefox/Profiles/xnfqorwk.default-release/chrome/helpimnotdrowning--icon-replacements/image/bitwarden-w.svg") !important;
+		--webextension-toolbar-image-dark: url("file:///C:/Users/helpi/AppData/Roaming/Mozilla/Firefox/Profiles/xnfqorwk.default-release/chrome/helpimnotdrowning--icon-replacements/image/bitwarden-b.svg") !important;
+    /*filter: brightness(100%%) !important;*/
+	}
+
+}
