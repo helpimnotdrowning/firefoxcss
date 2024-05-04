@@ -325,3 +325,8 @@
     z-index: 99 !important;
   
 }
+
+/* remove weird block on top of sidebar when on new tab page & bookmarks bar is set to "only show on new tab" */
+#sidebar-box {
+    padding-top: 0px !important;;
+}
