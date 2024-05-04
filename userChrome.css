@@ -64,23 +64,6 @@
 }
 
 /*
-  From Astromations/FlyingFox : Add a rounded corner to the top-left of the
-  browser content space, kind of mimics what Edge does with their sidebar
-  
-  TODO: currently gray, ill get the proper color later
-  
-  (curiously, Edge doesn't do this with their vertical tabs bar, just that weird
-  sidebar where they put shortcuts to bad HTML5 games and coupons)
-*/
-@media all and (display-mode: browser) {
-  	#tabbrowser-tabpanels browser[type="content"] {
-        /*color-scheme: unset !important;*/
-        border-top-left-radius: 18px;
-        
-    }
-}
-
-/*
   ranmaru22/firefox-vertical-tabs : Fix funky padding for Firefox button, align
 */
 @media (-moz-platform: windows) {
