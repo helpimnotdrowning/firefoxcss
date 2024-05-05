@@ -303,3 +303,9 @@
 #sidebar-box {
     padding-top: 0px !important;;
 }
+
+/* fix z fighting when higher tabs in sidebar are hovered, which overlap the nav bar */
+#navigator-toolbox {
+    z-index: 1 !important;
+	
+}
