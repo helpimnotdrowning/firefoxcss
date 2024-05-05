@@ -5,91 +5,46 @@
 :root {
     /* sharper corners */
     --firefoxcss-border-radius: 12px !important;
-  
+    
     /* less delay when opening vertical tabs */
     --delay: 0.0s;
-  
+    
     /* ranmaru22/firefox-vertical-tabs : fix nav-bar cut off on top */
     --uc-toolbar-height: 10px;
     
 }
 
-/* more margin for m/m/c buttons (default 95) */
 @media (-moz-platform: windows) {
+    /*
+      more margin for m/m/c buttons (default 95)
+    */
     :root {
         --firefoxcss-control-buttons-margin: 128px;
         
     }
-}
-
-/* a litttle less margin for linux kde hidpi @ 150% (fw13 2256 x 1504) */
-@media (-moz-platform: linux) {
-    :root {
-        --firefoxcss-control-buttons-margin: 80px;
-        
-    }
-}
-
-/*
-  Remove the space given by ranmaru22/firefox-vertical-tabs for mmc controls
-  in favor of letting datguypiko/Firefox-Mod-Blur handle it
-*/
-:root[tabsintitlebar]{
-    --uc-window-control-width: 0px;
     
-}
-
-/*
-  Don't display the ranmaru22/firefox-vertical-tabs built-in sidebar splitter
-*/
-#sidebar-box[sidebarcommand*="treestyletab_piro_sakura_ne_jp-sidebar-action"]:not([hidden]) {
-    border-right: unset;
-    
-}
-
-
-/* Don't display the Nav Bar splitter */
-#navigator-toolbox-background #navigator-toolbox {
-    border-bottom: none !important;
-    
-}
-
-/*
-  Using TreeStyleTabs as vertical tabs implementation, moving the tab bar while
-  hidded breaks things, so it is unset here
-*/
-#titlebar {
-    order: unset !important;
-    
-}
-
-/*
-  ranmaru22/firefox-vertical-tabs : Fix funky padding for Firefox button, align
-*/
-@media (-moz-platform: windows) {
+    /*
+      ranmaru22/firefox-vertical-tabs : Fix funky padding for Firefox button, align
+    */
     #PanelUI-button {
         margin-top: 1px !important;
         
     }
-}
-
-/*
-  ranmaru22/firefox-vertical-tabs : Fix mmc box sizes, sized closer to other
-  boxes like the extension buttons
-*/
-@media (-moz-platform: windows) {
+    
+    /*
+      ranmaru22/firefox-vertical-tabs : Fix mmc box sizes, sized closer to other
+      boxes like the extension buttons
+    */
     .titlebar-buttonbox * {
         width: 39px !important;
         height: 28px !important;
         
     }
-}
-
-/*
-  datguypiko/Firefox-Mod-Blur : Unset mmc padding, align w/ other buttons
-  8px spacing almost perfectly aligns with normal W11 button spacing
-*/
-@media (-moz-platform: windows) {
+    
+    /*
+      datguypiko/Firefox-Mod-Blur : Unset mmc padding, align w/ other buttons
+      8px spacing almost perfectly aligns with normal W11 button spacing
+    */
     .titlebar-buttonbox-container .titlebar-button {
         padding: unset !important;
         padding-left: unset !important;
@@ -98,9 +53,7 @@
         margin-right: 3px !important;
         
     }
-}
-
-@media (-moz-platform: windows) {
+    
     :root[sizemode="maximized"] .titlebar-buttonbox-container .titlebar-button {
         margin-top: 2px !important;
         
@@ -110,53 +63,18 @@
         margin-top: -1px !important;
         
     }
-}
-
-@media (-moz-platform: linux) {
+    
     /*
-      From: MrOtherGuy/firefox-csshacks: Workaround for Firefox bug : Use Linux's own
-      mmc buttons instead of built-in ones when using a theme
-    */
-    .titlebar-button {
-        list-style-image: none !important;
-        appearance: auto !important;
-        
-    }
-  
-    .titlebar-min {
-        -moz-default-appearance: -moz-window-button-minimize !important;
-        
-    }
-    
-    .titlebar-max {
-        -moz-default-appearance: -moz-window-button-maximize !important;
-        
-    }
-    
-    .titlebar-restore {
-        -moz-default-appearance: -moz-window-button-restore !important;
-        
-    }
-    
-    .titlebar-close {
-        -moz-default-appearance: -moz-window-button-close !important;
-        
-    }
-}
-
-@media (-moz-platform: windows) {
-    /*
-        Source file https://github.com/MrOtherGuy/firefox-csshacks/tree/master/chrome/window_control_fallback_for_custom_windows_theme.css
-        made available under Mozilla Public License v. 2.0
-        See the above repository for updates as well as full license text.
+      Source file https://github.com/MrOtherGuy/firefox-csshacks/tree/master/chrome/window_control_fallback_for_custom_windows_theme.css
+      made available under Mozilla Public License v. 2.0
+      See the above repository for updates as well as full license text.
     */
 
     /*
-        If one uses custom Windows theme, then Firefox uses high-contrast window
-        control buttons. This style makes Firefox fall back to using normal window
-        control style.
+      If one uses custom Windows theme, then Firefox uses high-contrast window
+      control buttons. This style makes Firefox fall back to using normal window
+      control style.
     */
-
     .titlebar-button {
         background-color: transparent !important;
         -moz-context-properties: stroke !important;
@@ -193,9 +111,7 @@
         list-style-image: url(chrome://browser/skin/window-controls/restore.svg) !important
         
     }
-}
-
-@media (-moz-platform: windows) {
+    
     /*
       Source file https://github.com/MrOtherGuy/firefox-csshacks/tree/master/chrome/menulike_bookmarks_folder_popups.css
       made available under Mozilla Public License v. 2.0
@@ -231,6 +147,80 @@
         padding-block: 0.5em !important;
         
     }
+}
+
+
+@media (-moz-platform: linux) {
+    /*
+      a litttle less margin for linux kde hidpi @ 150% (fw13 2256 x 1504)
+    */
+    :root {
+        --firefoxcss-control-buttons-margin: 80px;
+        
+    }
+    
+    /*
+      From: MrOtherGuy/firefox-csshacks: Workaround for Firefox bug : Use Linux's own
+      mmc buttons instead of built-in ones when using a theme
+    */
+    .titlebar-button {
+        list-style-image: none !important;
+        appearance: auto !important;
+        
+    }
+  
+    .titlebar-min {
+        -moz-default-appearance: -moz-window-button-minimize !important;
+        
+    }
+    
+    .titlebar-max {
+        -moz-default-appearance: -moz-window-button-maximize !important;
+        
+    }
+    
+    .titlebar-restore {
+        -moz-default-appearance: -moz-window-button-restore !important;
+        
+    }
+    
+    .titlebar-close {
+        -moz-default-appearance: -moz-window-button-close !important;
+        
+    }
+}
+
+/*
+  Remove the space given by ranmaru22/firefox-vertical-tabs for mmc controls
+  in favor of letting datguypiko/Firefox-Mod-Blur handle it
+*/
+:root[tabsintitlebar]{
+    --uc-window-control-width: 0px;
+    
+}
+
+/*
+  Don't display the ranmaru22/firefox-vertical-tabs built-in sidebar splitter
+*/
+#sidebar-box[sidebarcommand*="treestyletab_piro_sakura_ne_jp-sidebar-action"]:not([hidden]) {
+    border-right: unset;
+    
+}
+
+
+/* Don't display the Nav Bar splitter */
+#navigator-toolbox-background #navigator-toolbox {
+    border-bottom: none !important;
+    
+}
+
+/*
+  Using TreeStyleTabs as vertical tabs implementation, moving the tab bar while
+  hidded breaks things, so it is unset here
+*/
+#titlebar {
+    order: unset !important;
+    
 }
 
 /* ************************* */
