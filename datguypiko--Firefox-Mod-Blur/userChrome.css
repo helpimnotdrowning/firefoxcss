@@ -43,6 +43,7 @@
 @import url("searchbox_text_align_left.css");
 @import url("tabs_take_full_bar_width.css");
 @import url("show_searchbar_dots_only_on_hover.css");
+@import url("thicker_control_buttons.css");
 
 /*=====================================================================
 ================= D A R K   T H E M E   C O L O R S ===================
@@ -100,6 +101,7 @@
     --firefoxcss-url-breakout-box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px,
       rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px,
       rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+    --firefoxcss-url-clipboard-button: color-mix(in srgb, currentColor 10%, transparent);
 
     /* Other colors */
     --firefoxcss-urlbar-zoom-button: hsla(0, 0%, 60%, 0.35);
@@ -113,6 +115,7 @@
     --firefoxcss-customize-view-dashed-outline: hsla(0, 0%, 100%, 0.25);
     --firefoxcss-customize-view-flex-space: #d0ba9e;
     --firefoxcss-customize-view-overflow-menu: hsl(240, 2%, 10%);
+    
     /* ============== Firefox Global colors change ==================== */
     --arrowpanel-background: var(--firefoxcss-main-bg-color) !important;
     --button-hover-bgcolor: hsla(0, 0%, 60%, 0.35) !important;
@@ -133,6 +136,7 @@
     --panel-separator-zap-gradient: var(--panel-separator-color) !important;
     --lwt-sidebar-background-color: var(--firefoxcss-main-bg-color) !important;
     --urlbarView-highlight-background: hsl(240, 2%, 20%) !important;
+    --urlbarView-hover-background: color-mix(in srgb, currentColor 8%, transparent) !important;
   }
 }
 
@@ -192,6 +196,7 @@
     --firefoxcss-url-autocomplete-highlight: hsl(240, 10%, 90%);
     --firefoxcss-url-breakout-box-shadow: transparent 0 0 0 3px,
       rgba(18, 18, 18, 0.08) 2px 10px 22px;
+    --firefoxcss-url-clipboard-button: color-mix(in srgb, currentColor 10%, transparent);
 
     /* Other colors */
     --firefoxcss-urlbar-zoom-button: hsla(240, 8%, 60%, 0.35);
@@ -203,6 +208,7 @@
     --firefoxcss-customize-view-dashed-outline: hsla(0, 0%, 0%, 0.2);
     --firefoxcss-customize-view-flex-space: hsl(34, 50%, 70%);
     --firefoxcss-customize-view-overflow-menu: hsl(240, 10%, 100%);
+    
     /* ============== Firefox Global colors change ==================== */
     --arrowpanel-background: hsl(240, 15%, 98%) !important;
     --button-hover-bgcolor: hsla(240, 5%, 70%, 0.35) !important;
@@ -213,6 +219,7 @@
     --panel-separator-color: var(--arrowpanel-border-color) !important;
     --panel-separator-zap-gradient: var(--panel-separator-color) !important;
     --lwt-sidebar-background-color: var(--firefoxcss-main-bg-color) !important;
+    --urlbarView-hover-background: color-mix(in srgb, currentColor 8%, transparent) !important;
   }
 }
 
@@ -323,18 +330,14 @@ Order of Toolbars
   display: none !important;
 }
 
-/* Remove line on the right side of the Firefox view button */
-:root:not([privatebrowsingmode="temporary"]):not([firefoxviewhidden])
-  :is(#firefox-view-button, #wrapper-firefox-view-button)
-  + #tabbrowser-tabs {
-  border-inline-start: 0 !important;
-}
-
 /* Remove line between website content and top bar */
 #navigator-toolbox {
   border-bottom: var(--firefoxcss-top-bar-border-bottom-size) solid
     var(--firefoxcss-top-bar-border-bottom-color) !important;
 }
+
+/* Some random 0.01px(???) line removed (Firefox v126.0)*/
+#nav-bar { border-top: 0px !important; }
 
 /*=====================================================================
 ======================= H E I G H T   F I X E S =======================
@@ -404,60 +407,60 @@ Order of Toolbars
 about:config -> svg.context-properties.content.enabled -> true*/
 @media (prefers-color-scheme: dark) {
   #PanelUI-menu-button {
-    list-style-image: url(image/menu.svg) !important;
+    list-style-image: url(ASSETS/icons/menu.svg) !important;
   }
   :root[privatebrowsingmode="temporary"] #PanelUI-menu-button {
-    list-style-image: url(image/menu-private.svg) !important;
+    list-style-image: url(ASSETS/icons/menu-private.svg) !important;
   }
 
   #find-button {
-    list-style-image: url(image/search.svg) !important;
+    list-style-image: url(ASSETS/icons/search.svg) !important;
   }
 
   #privatebrowsing-button {
-    list-style-image: url(image/private.svg) !important;
+    list-style-image: url(ASSETS/icons/private.svg) !important;
   }
 
   #forward-button,
   menugroup > #context-forward,
   #search-container #searchbar .search-go-button,
   #urlbar-go-button {
-    list-style-image: url(image/right-arrow.svg) !important;
+    list-style-image: url(ASSETS/icons/right-arrow.svg) !important;
   }
 
   #back-button,
   menugroup > #context-back {
-    list-style-image: url(image/left-arrow.svg) !important;
+    list-style-image: url(ASSETS/icons/left-arrow.svg) !important;
   }
 }
 
 @media (prefers-color-scheme: light) {
   #PanelUI-menu-button {
-    list-style-image: url(image/menu-light.svg) !important;
+    list-style-image: url(ASSETS/icons/menu-light.svg) !important;
   }
 
   :root[privatebrowsingmode="temporary"] #PanelUI-menu-button {
-    list-style-image: url(image/menu-private-light.svg) !important;
+    list-style-image: url(ASSETS/icons/menu-private-light.svg) !important;
   }
 
   #find-button {
-    list-style-image: url(image/search-light.svg) !important;
+    list-style-image: url(ASSETS/icons/search-light.svg) !important;
   }
 
   #privatebrowsing-button {
-    list-style-image: url(image/private-light.svg) !important;
+    list-style-image: url(ASSETS/icons/private-light.svg) !important;
   }
 
   #forward-button,
   menugroup > #context-forward,
   #search-container #searchbar .search-go-button,
   #urlbar-go-button {
-    list-style-image: url(image/right-arrow-light.svg) !important;
+    list-style-image: url(ASSETS/icons/right-arrow-light.svg) !important;
   }
 
   #back-button,
   menugroup > #context-back {
-    list-style-image: url(image/left-arrow-light.svg) !important;
+    list-style-image: url(ASSETS/icons/left-arrow-light.svg) !important;
   }
 }
 
@@ -465,6 +468,7 @@ about:config -> svg.context-properties.content.enabled -> true*/
 ============================ S E A R C H   B A R ======================
 =====================================================================*/
 
+/* Some elements border radius */
 #urlbar-input-container,
 #searchbar,
 #urlbar-container,
@@ -472,15 +476,18 @@ about:config -> svg.context-properties.content.enabled -> true*/
   border-radius: var(--firefoxcss-border-radius) !important;
 }
 
+/* Remove line in search bar below text separating search results */
 #urlbar .urlbarView-body-inner {
   border-top: 0px !important;
 }
 
+/* Dont remember what this is for */
 #urlbar:not(.megabar):not([focused="true"]),
 #urlbar:not(.megabar):not([focused="true"]):hover {
   border-bottom: transparent;
 }
 
+/* Aligns text in the middle of search bar */
 #urlbar .urlbar-input-box {
   text-align: center;
 }
@@ -496,11 +503,12 @@ about:config -> svg.context-properties.content.enabled -> true*/
   box-shadow: var(--firefoxcss-url-box-shadow-color) !important;
 }
 
+/* Removes separator line at the bottom of search bar separating search buttons and menus */
 .urlbarView:not([noresults]) > .search-one-offs:not([hidden]) {
   border-top: none !important;
 }
 
-/* Megabar */
+/* Megabar - Popout search bar on focus */
 #urlbar[breakout] {
   height: auto !important;
 }
@@ -520,12 +528,16 @@ about:config -> svg.context-properties.content.enabled -> true*/
   transition: none !important;
 }
 
-#urlbar[breakout][breakout-extend] {
+#urlbar[breakout] {
   top: calc(
     (var(--urlbar-toolbar-height) - var(--urlbar-height)) / 2
   ) !important;
   left: 0 !important;
   width: 100% !important;
+}
+
+#urlbar[breakout]:not([open]){
+  bottom: calc((var(--urlbar-container-height) - var(--urlbar-height)) / 2) !important;
 }
 
 /* Styling Extra search bar that you can add to firefox */
@@ -798,7 +810,7 @@ about:config -> svg.context-properties.content.enabled -> true*/
   .titlebar-buttonbox-container .titlebar-close {
     order: 2 !important;
   }
-
+/*
   @media only screen and (max-width: 670px) {
     #navigator-toolbox:not([inFullscreen])
       #TabsToolbar
@@ -816,7 +828,7 @@ about:config -> svg.context-properties.content.enabled -> true*/
     }
   }
 }
-
+*/
 /*=====================================================================
 ====================== C O N T E X T   M E N U ========================
 =====================================================================*/
@@ -898,10 +910,6 @@ menuseparator#context-sep-navigation {
 menupopup#contentAreaContextMenu {
   --panel-padding: unset !important;
   --panel-padding: 0 0 5px !important;
-}
-
-.menupopup-arrowscrollbox {
-  overflow: hidden !important;
 }
 
 menupopup
@@ -1066,11 +1074,18 @@ toolbar
   box-shadow: none !important;
 }
 
-:root:not([privatebrowsingmode="temporary"]):not([firefoxviewhidden])
-  :is(#firefox-view-button, #wrapper-firefox-view-button)
-  + #tabbrowser-tabs {
-  padding-inline-start: 0px !important;
-  margin-inline-start: 2px !important;
+/* Remove line on the right side of the Firefox view button and fix margins */
+:root:not([privatebrowsingmode], [firefoxviewhidden]) :is(toolbarbutton, toolbarpaletteitem) + #tabbrowser-tabs,
+:root[privatebrowsingmode]:not([firefoxviewhidden]) :is(
+  toolbarbutton:not(#firefox-view-button),
+  toolbarpaletteitem:not(#wrapper-firefox-view-button)
+) + #tabbrowser-tabs {
+  border-inline-start: 0 !important;
+  margin-inline-start: 0px !important;
+}
+
+#firefox-view-button {
+  padding-right: 0px !important;
 }
 
 :root[privatebrowsingmode="temporary"] #PanelUI-menu-button {
@@ -1122,6 +1137,22 @@ toolbar
   transition-delay: 500ms;
 }
 
+#nav-bar:not([customizing="true"]):not(.searchButton)
+  > #nav-bar-customization-target
+  > #urlbar-container
+  > #urlbar
+  > #urlbar-input-container
+  > #identity-box
+  > #identity-icon-box:not([open])
+  > #identity-icon-label {
+  opacity: 0;
+  visibility: collapse;
+}
+
+#identity-icon-label {
+  transition:  opacity 0.3s ease;
+}
+
 #page-action-buttons .urlbar-page-action,
 #identity-permission-box,
 #notification-popup-box .notification-anchor-icon {
@@ -1142,13 +1173,15 @@ toolbar
 }
 
 #urlbar #identity-box.extensionPage #identity-icon-box {
+  /* padding-inline: var(--urlbar-icon-padding) !important; */
   margin-inline-start: initial !important;
   opacity: 1 !important;
 }
 
 #identity-box:hover #identity-icon-box,
 #identity-box:hover #identity-permission-box,
-#identity-box #identity-permission-box[open="true"] {
+#identity-box #identity-permission-box[open="true"],
+#identity-box #identity-icon-box[open="true"]{
   opacity: 1 !important;
   margin-inline-start: initial !important;
 }
@@ -1485,3 +1518,40 @@ toolbar
 #forward-button .toolbarbutton-icon{
   padding: 8.5px !important;
 }
+
+/* Container extension code */
+#TabsToolbar #tabbrowser-tabs .tabbrowser-tab[usercontextid] .tab-background:not([selected]) {
+  background: var(--identity-tab-color) !important;
+  opacity: 0.3 !important;
+}
+
+/* Container extension code */
+#tabbrowser-tabs .tab-context-line {
+  display:none !important;
+}
+
+/* Some color fixes after 125.0.1 update. URLBAR Clipboard buttons  */
+.urlbarView-row:is([type="switchtab"], [type="remotetab"], [type="clipboard"]) {
+  & > .urlbarView-row-inner > .urlbarView-no-wrap > .urlbarView-action {
+     background-color: var(--firefoxcss-url-clipboard-button) !important;
+    padding: 4px 8px !important;
+  }
+}
+.urlbarView-button {
+  .urlbarView-row:is([row-selectable]:hover, [selected]) > &:not(:hover, [open]) {
+    background-color: transparent !important;
+    opacity: 0.8 !important;
+  }
+}  
+
+/* #appcontent
+  > #tabbrowser-tabbox
+  > #tabbrowser-tabpanels
+  > .deck-selected
+  > .browserContainer
+  > .browserStack
+  > browser {
+  border-radius: 12px !important;
+  margin: 8px !important;
+  z-index: 3;
+} */
