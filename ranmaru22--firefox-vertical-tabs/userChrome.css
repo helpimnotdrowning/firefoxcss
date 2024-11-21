@@ -14,7 +14,7 @@
     .browser-toolbar:not(.titlebar-color){ /* Fixes wrong coloring applied with --toolbar-bgcolor by Firefox (#101) */
         background-color: transparent !important; 
         box-shadow: none !important; 
-    } 
+    }
 
     #TabsToolbar:not([customizing="true"]) {
         visibility: collapse !important; 
@@ -27,7 +27,7 @@
     /* Fixes issue in FF 123 where minimize, close, and maximize buttons no longer work. */
     :root[tabsintitlebar] #titlebar { 
         will-change: auto !important; 
-    } 
+    }
 
     :root:not([customizing="true"]) #toolbar-menubar[inactive]+#TabsToolbar .titlebar-buttonbox-container { 
         visibility: visible !important; 
@@ -35,13 +35,13 @@
         top: var(--uc-win-ctrl-vertical-offset); 
         display: block; 
         z-index: 101; 
-    } 
+    }
 
     /* enable rounded top corners */
     :root[tabsintitlebar][sizemode="normal"]:not([gtktiledwindow="true"]):not([customizing="true"]) #nav-bar { 
         border-top-left-radius: env(-moz-gtk-csd-titlebar-radius); 
         border-top-right-radius: env(-moz-gtk-csd-titlebar-radius); 
-    } 
+    }
 
     /* window control padding values (these don't change the size of the actual buttons, only the padding for the navbar) */
     :root[tabsintitlebar]:not([customizing="true"]) {
@@ -119,8 +119,6 @@
     [inDOMFullscreen="true"] .titlebar-buttonbox-container {
         transform: translateY(-100px)
     }
-
-
 }
 
 /* Windows specific styles */
@@ -138,27 +136,7 @@
         border-right-width: calc(var(--uc-window-control-width,0px) + var(--uc-window-drag-space-width,0px));
 
         padding-top: .5px !important; /* This makes it possible to drag the maximized window. */
-        margin-left: -80px; /* Removes the space left when hiding .titlebar-buttonbox-container */
-    }
-
-    #back-button {
-        margin-top: -.5px !important;
-    }
-
-    #forward-button {
-        margin-top: -.5px !important;
-    }
-
-    #reload-button {
-        margin-top: -.5px !important;
-    }
-
-    #PanelUI-button {
-        margin-top: -.5px !important;
-    }
-
-    #nav-bar-overflow-button{
-        margin-top: -.5px !important;
+        /* margin-left: -80px; */ /* Removes the space left when hiding .titlebar-buttonbox-container */
     }
 
     :root {
@@ -170,14 +148,6 @@
         --uc-toolbar-height: 38px;
     }
 
-    #TabsToolbar {
-        visibility: collapse !important;
-    }
-
-    /* Hide the Windows controls on the left side. */
-    #TabsToolbar .titlebar-buttonbox-container {
-        visibility: hidden !important;
-    }
     /* Line up the Windows controls with the rest of the icons in the toolbar. */
     :root:not([sizemode="maximized"]) .titlebar-buttonbox-container { 
         margin-top: 3px; 
@@ -198,11 +168,11 @@
     /* For a rounded button design, uncomment both lines in .titlebar-buttonbox. */
     .titlebar-buttonbox {
         z-index: 3 !important;
-        /* padding-right:3px; */
+        padding-right: 2px;
     }
 
     .titlebar-buttonbox * {
-        /* border-radius: 5px; */
+        border-radius: 5px;
         width: 35px;
         height: 38px;
         pointer-events: auto;
