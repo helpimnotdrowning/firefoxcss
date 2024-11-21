@@ -14,7 +14,7 @@
 
 :root {
 	--delay: 0.5s;
-	--uc-toolbar-height: 15px;
+	--uc-toolbar-height: 0px;
 	--uc-navbar-height: 43px;
 	--theme-colors-popup: var(--toolbar-bgcolor);
 	--theme-colors-popup-light: color-mix(in srgb, var(--theme-colors-popup), white 10%);
@@ -136,7 +136,6 @@
 	top: 27px !important;
 }
 
-@media print {
 /* make browser content smaller when tabs are shown */
 #sidebar-box[sidebarcommand*="treestyletab_piro_sakura_ne_jp-sidebar-action"]:not([hidden]) ~ #tabbrowser-tabbox {
 	position: absolute !important;
@@ -148,6 +147,7 @@
 	height: calc(100vh - var(--uc-navbar-height)) !important;
 }
 
+@media print {
 #sidebar-box[sidebarcommand*="treestyletab_piro_sakura_ne_jp-sidebar-action"]:not([hidden]) {
 	top: var(--uc-navbar-height) !important;
 	left: 0px !important;
