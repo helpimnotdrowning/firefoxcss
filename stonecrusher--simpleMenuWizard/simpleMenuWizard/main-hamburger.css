@@ -33,14 +33,14 @@
 /* #appMenuRecentlyClosedWindows,                         /* Recently Closed Windows       */
 /* #appMenuRestoreSession,                                /* Restore Previous Session      */
 /* #appMenuRestoreSession + toolbarseparator,             /*********** Separator ***********/
-/* #appMenuClearRecentHistory,                            /* Clear Recent History…         */
-/* #appMenuClearRecentHistory + toolbarseparator,         /*********** Separator ***********/
+#appMenuClearRecentHistory,                            /* Clear Recent History…         */
+#appMenuClearRecentHistory + toolbarseparator,         /*********** Separator ***********/
 /* #panelMenu_recentHistory,                              /* Recent History (label)        */
 /* #appMenu_historyMenu,                                  /* Recent History (list)         */
 /* #appMenu_historyMenu + toolbarseparator,               /*********** Separator ***********/
 /* #PanelUI-historyMore,                                  /* Manage History                */
 /* #appMenu-downloads-button,                         /* Downloads                     */
-/* #appMenu-passwords-button,                         /* Passwords                     */
+#appMenu-passwords-button,                         /* Passwords                     */
 /* #appMenu-extensions-themes-button,                 /* Add-ons and Themes            */
 /* #appMenu-extensions-themes-button
        + toolbarseparator,                            /*********** Separator ***********/

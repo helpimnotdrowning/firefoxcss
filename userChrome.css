@@ -1,85 +1,69 @@
 @import url("MrOtherGuy--firefox-csshacks/compact_extensions_panel.css");
+@import url("MrOtherGuy--firefox-csshacks/hide_tabs_toolbar_v2.css");
+@import url("MrOtherGuy--firefox-csshacks/autohide_sidebar.css");
 
 @import url("datguypiko--Firefox-Mod-Blur/icons_in_main_menu.css");
 @import url("datguypiko--Firefox-Mod-Blur/menu_icon_change_to_firefox.css");
 @import url("datguypiko--Firefox-Mod-Blur/ublock-icon-change.css");
 @import url("datguypiko--Firefox-Mod-Blur/white_github_icon_in_bookmarks.css");
 
-@import url("ranmaru22--firefox-vertical-tabs/userChrome.css");
+/*@import url("ranmaru22--firefox-vertical-tabs/userChrome.css");*/
 
-@import url("stonecrusher--simpleMenuWizard/userChrome.css");
+/*@import url("stonecrusher--simpleMenuWizard/userChrome.css");*/
 
-@import url("helpimnotdrowning--icon-replacements/userChrome.css");
-
-:root {
-	--delay: 0.5s;
-	--uc-toolbar-height: 0px;
-	--uc-navbar-height: 43px;
-	--theme-colors-popup: var(--toolbar-bgcolor);
-	--theme-colors-popup-light: color-mix(in srgb, var(--theme-colors-popup), white 10%);
-	--ease-out-exponential: cubic-bezier(0.16, 1, 0.3, 1);
-
-	--uc-win-ctrl-vertical-offset: 7px !important;
-	
-	--normal-shadow-down: 0px 8px 10px 0px rgba(0, 0, 0, .14);
-	--normal-shadow-right: 8px 0px 10px 0px rgba(0, 0, 0, .14);
-
-	--nhnd-sidebar-width: 48px;
+/* *** Extension menu: hide header *** */
+/* header text */
+#unified-extensions-view > .panel-header {
+	display: none !important;
 }
 
-/* hide ff tabs bar */
-.toolbar-items {
-	visibility: hidden;
+/* divider bar */
+#unified-extensions-view > toolbarseparator:nth-of-type(1) {
+	display: none !important;
 }
 
-#navigator-toolbox {
-	/* anchor bg for seamless transition into sidebar */
-	background-position: left top !important;
-
-	/* remove that stupid border on the bottom */
-	border-bottom: 0px !important;
-
-	/* oops something broke! */
-	height: 43px !important;
+/* readd top padding */
+#unified-extensions-area {
+	padding-top: 4px !important;
 }
+/* *** END Extension menu: hide header *** */
 
+/* *** Use theme background image for titlebar *** */
 #nav-bar {
-	/* merge nav-bar and titlebar */
-	background-color: transparent !important;
-	position: absolute !important;
-	padding-top: 3.5px !important;
+	background-image: var(--lwt-additional-images);
+	background-repeat: var(--lwt-background-tiling);
+	background-position: top left;
+}
+/* *** END Use theme background image for titlebar *** */
 
-	/* make space for mmc buttons */
-	left: 0px !important;
-	right: 99px !important;
+/* *** Remove toolbox bottom border *** */
+#navigator-toolbox {
+	border-bottom-width: 0px !important;
+}
+/* *** END Remove navbar bottom border *** */
 
-	/* remove that stupid border on top */
-	border-width: 0px 0px 0px 0px !important;
-	border-top: 0px !important;
-	border-bottom: 0px !important;
+/* *** Sidebar things *** */
+
+/* set vars for MrOtherGuy--firefox-csshacks/autohide_sidebar */
+#sidebar-box {
+	--uc-sidebar-width: 50px !important;
+	--uc-sidebar-hover-width: 250px	!important;
+	--uc-autohide-sidebar-delay: 0.2s !important;
+	--uc-autohide-transition-duration: 0.2s !important;
+	--uc-autohide-transition-type: ease !important;
 }
 
-/* fix padding weirdness */
-.browser-toolbar {
-	padding: unset !important;
+/* hide header */
+#sidebar-box[sidebarcommand*="treestyletab_piro_sakura_ne_jp-sidebar-action"] > #sidebar-header/*,
+#sidebar-splitter[sidebarcommand*="treestyletab_piro_sakura_ne_jp-sidebar-action"]*/ {
+	display: none;
 }
 
-/* set height */
-#TabsToolbar {
-	/*height: 43px !important;*/
+/* hide right border */
+#sidebar, #sidebar-header {
+	border-inline: none !important;
 }
-
-/* remove splitter, header */
-#sidebar-splitter, #sidebar-header {
-	visibility: collapse !important;
-}
-
-@media (-moz-platform: windows) {
-	#navigator-toolbox {
-		/* micro inconsistency */
-		margin-top: 1px !important;
-	}
-}
+/* *** END Sidebar things *** */
 
 @media (-moz-platform: linux) {
 	/*
@@ -131,86 +115,54 @@
 	}
 }
 
-/* patches for ranmaru22 */
-#sidebar {
-	width: 50px !important;
-	height: calc(100vh - 43px) !important;
-	left: 50px !important;
+/* *** Right-click menu things *** */
+menupopup {
+	--panel-background: #26292d !important;
+	--panel-border-radius: 3px !important;
+	--panel-border-color: gray !important;
+	--panel-padding: 0px !important;
 }
 
-#sidebar-box {
-	top: 27px !important;
+menuseparator {
+	width: calc(100% - 14px) !important;
+	margin: auto;
 }
 
-/* make browser content smaller when tabs are shown */
-#sidebar-box[sidebarcommand*="treestyletab_piro_sakura_ne_jp-sidebar-action"]:not([hidden]) ~ #tabbrowser-tabbox {
-	position: absolute !important;
 
-	top: var(--uc-navbar-height) !important;
-	left: var(--nhnd-sidebar-width) !important;
-	
-	width: calc(100vw - var(--nhnd-sidebar-width)) !important;
-	height: calc(100vh - var(--uc-navbar-height)) !important;
+menu, menuitem, menucaption {
+	@media(-moz-platform: linux){
+		padding: 3.2px 6px;
+	}	
 }
 
-@media print {
-#sidebar-box[sidebarcommand*="treestyletab_piro_sakura_ne_jp-sidebar-action"]:not([hidden]) {
-	top: var(--uc-navbar-height) !important;
-	left: 0px !important;
-
-	width: 48px !important;
-	min-width: 48px !important;
-	height: calc(100vh - var(--uc-navbar-height)) !important;
-	
-	position: fixed !important;
-	
-	overflow: hidden !important;
-	z-index: 999 !important;
-
-	border-right: 1px solid var(--sidebar-border-color) !important;
-	
-	/* 2nd item unclips shadow */
-	transition: all 0.2s ease, clip-path 0.2s ease !important;
-	transition-delay: 0s !important;
-	
-	/*
-		remove weird block on top of sidebar when on new tab page & bookmarks bar is
-		set to "only show on new tab"
-	*/
-	padding-top: 0px !important;
-	
-	/*
-		spacer to show the border from underneath (the navigator-toolbox border)
-		since I couldn't figure out how to give the sidebar its own border
-	*/
-	top: -2px;
-	
-	box-shadow: var(--normal-shadow-right) !important;
-	/*
-		creates a clip mask like
-		┌ 48px ┐
-		│      41px
-		100%   └ 300% - 48px ┐
-		│                    100% - 41px
-		└─────── 300% ───────┘
-		which stops the shadow from showing on top of the #nav-bar
-	*/
-	/* clip-path: polygon( 0% 0%, 48px 0%, 48px 41px, 300% 41px, 300% 100%, 0px 100%) !important; */
+.x-nhnd-menuobject {
+	background-color: orange !important;
 }
 
-#sidebar-box[sidebarcommand*="treestyletab_piro_sakura_ne_jp-sidebar-action"]:not([hidden]):hover {
-	/*
-		creates a clip mask like
-		┌ 300% ┐
-		│      │
-		100%   100%
-		│      │
-		└ 300% ┘
-	*/
-	clip-path: polygon( 0% 0%, 300% 0px, 300% 41px, 300% 41px, 300% 100%, 0px 100%) !important;
-
-	transition-delay: var(--delay) !important;
-	width: 250px !important;
+/* purposefully ignoring menugroups because their only instances
+	are the forward/backward/reload/star bars that are hidden
+	anyways in stonecrusher--simpleMenuWizard */
+/*menupopup > :is(menuitem,menu):nth-of-type(10n-23) {*/
+:is(menuitem,menu):not([disabled]):first-of-type {	
+	padding-top: 5.5px !important;
+	background-color: blue;
 }
 
+never {
+	padding-bottom: 5.5px !important;
+	background-color: green;
 }
+/* *** END Right-click menu things *** */
+
+/* *** Override weird spacer from
+	MrOtherGuy--firefox-csshacks/hide_tabs_toolbar_v2 *** */
+@media not (-moz-bool-pref: "sidebar.verticalTabs") {
+  :root:is([tabsintitlebar], [customtitlebar]) #toolbar-menubar:not([autohide="false"]) ~ #nav-bar {
+    :root[sizemode="normal"] & {
+      & > .titlebar-spacer {
+        display: none !important;
+      }
+    }
+  }
+}
+/* *** END Override weird spacer from [...] *** */

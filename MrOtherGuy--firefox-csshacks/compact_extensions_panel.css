@@ -14,7 +14,7 @@ See the above repository for updates as well as full license text. */
   padding-block: 6px !important;
 }
 .unified-extensions-item-menu-button.subviewbutton > .toolbarbutton-icon{
-  padding: 4px !important;
+  padding: 0px !important;
 }
 .unified-extensions-item-message-deck{
   display: none

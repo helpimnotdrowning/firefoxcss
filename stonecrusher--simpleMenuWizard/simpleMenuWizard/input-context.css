@@ -8,10 +8,10 @@
 /*** input-context.css ***/
 /*** When right-clicking on an input-field ***/
 
-/* #fill-login,                            /* Use Saved Login                  */
-/* #fill-login-generated-password,         /* Suggest Strong Password…         */
-/* #manage-saved-logins,                   /* Manage Logins                    */
-/* #passwordmgr-items-separator,           /************ Separator *************/
+#fill-login,                            /* Use Saved Login                  */
+#fill-login-generated-password,         /* Suggest Strong Password…         */
+#manage-saved-logins,                   /* Manage Logins                    */
+#passwordmgr-items-separator,           /************ Separator *************/
 /* #spell-no-suggestions,                  /* (No Spelling Suggestions)        */
 /* menuitem.spell-suggestion,              /* ~ List of spelling suggestions ~ */
 /* #spell-add-to-dictionary,               /* Add To Dictionary                */
@@ -36,8 +36,8 @@
 /* #context-sep-bidi,                      /************ Separator *************/
 /* #context-bidi-text-direction-toggle,    /* Switch Text Direction            */
 /* #context-bidi-page-direction-toggle,    /* Switch Page Direction            */
-/* #fill-login-separator,                  /************ Separator *************/
-/* #fill-login,                            /* Fill Login                       */
+#fill-login-separator,                  /************ Separator *************/
+#fill-login,                            /* Fill Login                       */
 /* #inspect-separator,                     /************ Separator *************/
 /* #context-inspect,                       /* Inspect (Q)                      */
 
