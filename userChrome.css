@@ -11,6 +11,11 @@
 
 /*@import url("stonecrusher--simpleMenuWizard/userChrome.css");*/
 
+:root {
+	--accent-1: #61c792;
+	--lwt-background-alignment: left top;
+}
+
 /* *** Extension menu: hide header *** */
 /* header text */
 #unified-extensions-view > .panel-header {
@@ -32,7 +37,7 @@
 #nav-bar {
 	background-image: var(--lwt-additional-images);
 	background-repeat: var(--lwt-background-tiling);
-	background-position: top left;
+	background-position: var(--lwt-background-alignment);
 }
 /* *** END Use theme background image for titlebar *** */
 
@@ -113,44 +118,56 @@
 		padding-left: 0px !important;
 		padding-right: 5px !important;
 	}
+
+	/* *** KDE icons *** */
+	#reload-button {
+		list-style-image: url('file:///usr/share/icons/breeze-dark/actions/32/view-refresh.svg') !important
+	}
+	/* *** END KDE icons *** */
 }
 
 /* *** Right-click menu things *** */
-menupopup {
-	--panel-background: #26292d !important;
-	--panel-border-radius: 3px !important;
-	--panel-border-color: gray !important;
-	--panel-padding: 0px !important;
-}
+@media (-moz-platform: linux) {
+	/* kde assumed! */
+	menupopup {
+		--panel-background: #26292d !important;
+		--panel-border-radius: 3px !important;
+		--panel-border-color: #5f6265 !important;
+		--panel-padding: 0px !important;
+	}
 
-menuseparator {
-	width: calc(100% - 14px) !important;
-	margin: auto;
-}
+	menuseparator {
+		width: calc(100% - 14px) !important;
+		margin: auto;
+	}
 
 
-menu, menuitem, menucaption {
-	@media(-moz-platform: linux){
+	menu, menuitem, menucaption {
 		padding: 3.2px 6px;
-	}	
-}
+	}
 
-.x-nhnd-menuobject {
-	background-color: orange !important;
-}
 
-/* purposefully ignoring menugroups because their only instances
-	are the forward/backward/reload/star bars that are hidden
-	anyways in stonecrusher--simpleMenuWizard */
-/*menupopup > :is(menuitem,menu):nth-of-type(10n-23) {*/
-:is(menuitem,menu):not([disabled]):first-of-type {	
-	padding-top: 5.5px !important;
-	background-color: blue;
-}
+	/* purposefully ignoring menugroups because their only instances
+		are the forward/backward/reload/star bars that are hidden
+		anyways in the userChrome.js */
+	menupopup[hasbeenopened] > :nth-child(1 of .x-nhnd-menuobject:not([hidden])) {	
+		padding-top: 5.5px !important;
+	}
 
-never {
-	padding-bottom: 5.5px !important;
-	background-color: green;
+	menupopup[hasbeenopened] > :nth-last-child(1 of .x-nhnd-menuobject:not([hidden])) {
+		padding-bottom: 5.5px !important;
+	}
+
+	.x-nhnd-menuobject {
+		text-decoration: none !important;
+		background-color: unset !important;
+	}
+
+	.x-nhnd-menuobject:hover {
+		background-color: unset !important;
+		text-decoration: underline !important;
+		text-decoration-color: var(--accent-1) !important;
+	}
 }
 /* *** END Right-click menu things *** */
 
@@ -166,3 +183,14 @@ never {
   }
 }
 /* *** END Override weird spacer from [...] *** */
+
+/* *** set background for find bar *** */
+findbar {
+	background: none !important; /* zero out existing style */
+	background-image: var(--lwt-additional-images) !important;
+	background-repeat: var(--lwt-background-tiling) !important;
+	background-position: var(--lwt-background-alignment) !important;
+
+	border: none;
+}
+/* *** END set background for find bar *** */

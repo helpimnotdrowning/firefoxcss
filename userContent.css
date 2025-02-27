@@ -1,12 +1,26 @@
-@import url("datguypiko--Firefox-Mod-Blur/userContent.css");
+@-moz-document url("about:home"), url("about:newtab") {
+	body {
+		background: url("assets/wallpaper/wallpaper.jpg") center/cover no-repeat fixed !important;
+	}
+	
+	.tile {
+		background: none !important;
+		box-shadow: none !important;
+	}
 
-/*
-  Hide search bar in newtab (but keep spacing), I just use the URL bar anyways
-*/
-@-moz-document url("about:home"),
-url("about:newtab") {
-  .search-wrapper .search-handoff-button, .search-wrapper input {
-    visibility: hidden
-  }
+	.top-site-outer .top-site-icon,
+	.top-sites-list:not(.dnd-active) .top-side-outer:is(.hover, :hover, :focus) {
+		background-color: transparent !important;
+	}
+	
+	.top-site-outer {
+		backdrop-filter: blur(20px);
+		background-color: hsla(0, 0%, 12%, 0.4);
+		margin-bottom: 0px !important;;
+	}
+	
+	.top-sites-list {
+		column-gap: 1em;
+		row-gap: 1em !important;
+	}
 }
-
