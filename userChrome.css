@@ -13,7 +13,7 @@
 
 :root {
 	--accent-1: #61c792;
-	--lwt-background-alignment: left top;
+	--lwt-background-alignment: left top !important;
 }
 
 /* *** Extension menu: hide header *** */
@@ -37,7 +37,7 @@
 #nav-bar {
 	background-image: var(--lwt-additional-images);
 	background-repeat: var(--lwt-background-tiling);
-	background-position: var(--lwt-background-alignment);
+	background-position: var(--lwt-background-alignment) !important;;
 }
 /* *** END Use theme background image for titlebar *** */
 
@@ -71,59 +71,7 @@
 /* *** END Sidebar things *** */
 
 @media (-moz-platform: linux) {
-	/*
-		From: MrOtherGuy/firefox-csshacks: Workaround for Firefox bug: Use
-		Linux's own mmc buttons instead of built-in ones when using a theme
-	*/	
-	.titlebar-button{
-		list-style-image: none !important;
-		appearance: none !important;
-	}
 	
-	.titlebar-button > .toolbarbutton-icon{
-		appearance: auto !important;
-		background: none !important;
-		width: unset !important;
-		height: unset !important;
-	}
-	
-	.titlebar-min > .toolbarbutton-icon{
-		-moz-default-appearance: -moz-window-button-minimize !important;
-	}
-	
-	.titlebar-max > .toolbarbutton-icon{
-		-moz-default-appearance: -moz-window-button-maximize !important;
-	}
-	
-	.titlebar-restore > .toolbarbutton-icon{
-		-moz-default-appearance: -moz-window-button-restore !important;
-	}
-	
-	.titlebar-close > .toolbarbutton-icon{
-		-moz-default-appearance: -moz-window-button-close !important;
-	}
-
-	/* Properly align MMC buttons on my personal install */
-	.titlebar-min, .titlebar-max, .titlebar-restore {
-		padding-left: 5px !important;
-		padding-right: 5px !important;
-	}
-
-	.titlebar-min {
-		margin-bottom: 1px !important;
-		padding-left: 10px !important;
-	}
-
-	.titlebar-close {
-		padding-left: 0px !important;
-		padding-right: 5px !important;
-	}
-
-	/* *** KDE icons *** */
-	#reload-button {
-		list-style-image: url('file:///usr/share/icons/breeze-dark/actions/32/view-refresh.svg') !important
-	}
-	/* *** END KDE icons *** */
 }
 
 /* *** Right-click menu things *** */
