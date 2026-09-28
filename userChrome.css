@@ -11,9 +11,62 @@
 
 /*@import url("stonecrusher--simpleMenuWizard/userChrome.css");*/
 
+/* *** *** *** */
+
+/* reduce padding in Menu, tools submenu, and help submenu */
+#appMenu-mainView, #appmenu-moreTools, #PanelUI-helpItems {
+	& toolbarbutton {
+		padding-block: 0px !important;
+	}
+}
+
+/* reduce padding in profiles submenu of Menu */
+#appMenu-profiles-button .toolbarbutton-text {
+	padding-inline-start: 0px !important;
+}
+
+/* box in urlbar that says "Firefox" when on a config: url touched the urlbar text */
+#identity-box {
+	margin-inline-start: var(--urlbar-input-gap);
+}
+
+/* "This time, search with..." */
+.search-one-offs {
+	display: none !important;
+}
+
+/* em-dash that appears when hovering a urlbar result would grow the container */
+.urlbarView-title-separator {
+	font-size: var(--urlbarView-small-font-size);
+}
+
+#urlbar-results {
+	/* too much padding in urlbar results */
+	--urlbarView-row-padding-block: 2px;
+
+	/* "Recent Searches" text is too close to next item */
+	& [type=search]::before {
+		margin-top: -8px;
+	}
+}
+
+/* *** *** *** */
+
 :root {
 	--accent-1: #61c792;
 	--lwt-background-alignment: left top !important;
+	--nav-bar-height: 36px;
+	--empty-icon-url: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16'/%3E");
+}
+
+
+/* *** datguypiko--Firefox-Mod-Blur/icons_in_main_menu: remove some icons *** */
+#appMenu-new-window-button2, #appMenu-new-private-window-button2,
+#appMenu-downloads-button, #appMenu-extensions-themes-button,
+#appMenu-save-file-button2, #appMenu-find-button2, #appMenu-more-button2,
+#appMenu-help-button2, #appMenu-translate-button
+{
+	list-style-image: var(--empty-icon-url);
 }
 
 /* *** Extension menu: hide header *** */
@@ -30,6 +83,11 @@
 /* readd top padding */
 #unified-extensions-area {
 	padding-top: 4px !important;
+}
+
+/* fix massive padding */
+.unified-extensions-item-action-button.subviewbutton {
+  padding-block: 0px !important;
 }
 /* *** END Extension menu: hide header *** */
 
@@ -71,7 +129,10 @@
 /* *** END Sidebar things *** */
 
 @media (-moz-platform: linux) {
-	
+	/* *** match nav-bar height to kde ****/
+	#nav-bar, #urlbar-container {
+		height: var(--nav-bar-height) !important;
+	}
 }
 
 /* *** Right-click menu things *** */
@@ -117,10 +178,8 @@
 		text-decoration-color: var(--accent-1) !important;
 	}
 }
-/* *** END Right-click menu things *** */
 
-/* *** Override weird spacer from
-	MrOtherGuy--firefox-csshacks/hide_tabs_toolbar_v2 *** */
+/* *** Override weird spacer from MrOtherGuy--firefox-csshacks/hide_tabs_toolbar_v2 *** */
 @media not (-moz-bool-pref: "sidebar.verticalTabs") {
   :root:is([tabsintitlebar], [customtitlebar]) #toolbar-menubar:not([autohide="false"]) ~ #nav-bar {
     :root[sizemode="normal"] & {
@@ -130,7 +189,6 @@
     }
   }
 }
-/* *** END Override weird spacer from [...] *** */
 
 /* *** set background for find bar *** */
 findbar {
@@ -141,4 +199,3 @@ findbar {
 
 	border: none;
 }
-/* *** END set background for find bar *** */
